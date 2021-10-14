@@ -28,7 +28,7 @@ def csv_read_view(request):
         print(df)
         password_column = []
         for index, row in df.iterrows():
-            ltm = datetime.datetime.now() + timedelta(minutes=1)
+            ltm = datetime.datetime.now() + timedelta(minutes=2)
             print(ltm)
             password = User.objects.make_random_password(12)
             user = User.objects.create_user(row['username'], row['emailid'], password)
@@ -55,4 +55,8 @@ def csv_read_view(request):
         messages.error(request, "Users added Successfully!")
         return HttpResponseRedirect(reverse('homepage'))
     else:
-        return render(request, 'homepage.html')
+        user = User.objects.all()
+        context = {
+            "users": user
+        }
+        return render(request, 'homepage.html', context)

@@ -28,6 +28,27 @@
       <input type="file" name="file">
       <input type="submit" value="UPLOAD" class="btn btn-sm btn-outline-primary">
     </form>
+
+    <br>
+    <br>
+    <table>
+      <thead>
+      <tr>
+        <th>ID:</th>
+        <th>NAME:</th>
+        <th>Email ID:</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for user in users %}
+      <tr>
+        <td>{{user.id}}</td>
+        <td>{{user.username}}</td>
+        <td>{{user.email}}</td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
   </div>
 
 
